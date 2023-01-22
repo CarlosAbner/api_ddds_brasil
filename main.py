@@ -9,16 +9,22 @@ print('*------------------------------------------------------------*')
 
 class DDD:
     def ddd_uf(self, n):
-        r = requests.get(f'https://brasilapi.com.br/api/ddd/v1/{str(n)}')
-        r_requests = r.json()
-        uf = r_requests['state']
-        return f'O estado retorado foi {uf} \n'
+        try:
+            r = requests.get(f'https://brasilapi.com.br/api/ddd/v1/{str(n)}')
+            r_requests = r.json()
+            uf = r_requests['state']
+            return f'O estado retorado foi {uf} \n'
+        except:
+            print('Números entre 11 e 98')
 
 
     def ddd_cidades(self, n):
-        requi = requests.get(f'https://brasilapi.com.br/api/ddd/v1/{str(n)}')
-        requi_json = requi.json()
-        return f"e as cidades foram: \n{','.join(requi_json['cities'])} \nTotal de {len(requi_json['cities'])} cidade"
+        try:
+            requi = requests.get(f'https://brasilapi.com.br/api/ddd/v1/{str(n)}')
+            requi_json = requi.json()
+            return f"e as cidades foram: \n{','.join(requi_json['cities'])} \nTotal de {len(requi_json['cities'])} cidade"
+        except:
+            print('Números entre 11 e 98')
 
 objeto_r = DDD()
 
